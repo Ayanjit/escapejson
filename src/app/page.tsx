@@ -20,7 +20,14 @@ export default function Home() {
 	const handleUnescape = () => {
 		try {
 			const unescaped = JSON.parse(`"${leftText}"`)
-			setRightText(unescaped)
+			// Try to parse the unescaped string as JSON for pretty printing
+			try {
+				const jsonObj = JSON.parse(unescaped)
+				setRightText(JSON.stringify(jsonObj, null, 2))
+			} catch {
+				// If not valid JSON, just show the unescaped string
+				setRightText(unescaped)
+			}
 		} catch (error) {
 			console.log(error)
 			setRightText('Invalid input')
