@@ -1,4 +1,5 @@
-This is built to escape JSON data or unescape JSON string.
+This is built to escape JSON data or unescape JSON string. Fully client-side.
+Hosted : https://jsonescape.bybob.cc
 
 Code is written by GitHub Copilot only.
 
