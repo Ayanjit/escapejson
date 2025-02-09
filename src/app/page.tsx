@@ -88,7 +88,7 @@ export default function Home() {
 			</main>
 
 			<footer className={styles.footer}>
-				by <a href="https://x.com/bybobcc" target="_blank" rel="noopener noreferrer">bob</a>
+				by <a href="https://x.com/bybobcc" target="_blank" rel="noopener noreferrer">bob</a>, <a href="https://github.com/Ayanjit/escapejson" target="_blank" rel="noopener noreferrer">code</a>
 			</footer>
 		</div>
 	)
