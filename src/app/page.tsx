@@ -7,6 +7,20 @@ export default function Home() {
 	const [leftText, setLeftText] = useState('')
 	const [rightText, setRightText] = useState('')
 
+	const handlePaste = (e: React.ClipboardEvent) => {
+		const pastedText = e.clipboardData.getData('text')
+		try {
+			// Try to parse as JSON first
+			const jsonObj = JSON.parse(pastedText)
+			// If successful, it's JSON, so pretty print it
+			setLeftText(JSON.stringify(jsonObj, null, 2))
+			e.preventDefault() // Prevent default paste
+		} catch {
+			// If not valid JSON, let default paste happen
+			return
+		}
+	}
+
 	const handleEscape = () => {
 		try {
 			const escaped = JSON.stringify(leftText).slice(1, -1)
@@ -48,6 +62,7 @@ export default function Home() {
 				<textarea
 					value={leftText}
 					onChange={(e) => setLeftText(e.target.value)}
+					onPaste={handlePaste}
 					className={styles.textbox}
 					placeholder="Enter text here..."
 				/>
