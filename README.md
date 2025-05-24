@@ -1,5 +1,5 @@
 This is built to escape JSON data or unescape JSON string. Fully client-side.<br />
-Hosted : https://jsonescape.bybob.cc
+Hosted : https://escapejson.bybob.cc
 
 Code is written by GitHub Copilot only.
 
