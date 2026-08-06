@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import styles from './page.module.css'
+import { escapeInput, unescapeInput } from '../lib/json'
 
 export default function Home() {
 	const [leftText, setLeftText] = useState('')
@@ -22,30 +23,11 @@ export default function Home() {
 	}
 
 	const handleEscape = () => {
-		try {
-			const escaped = JSON.stringify(leftText).slice(1, -1)
-			setRightText(escaped)
-		} catch (error) {
-			console.log(error)
-			setRightText('Invalid input')
-		}
+		setRightText(escapeInput(leftText))
 	}
 
 	const handleUnescape = () => {
-		try {
-			const unescaped = JSON.parse(`"${leftText}"`)
-			// Try to parse the unescaped string as JSON for pretty printing
-			try {
-				const jsonObj = JSON.parse(unescaped)
-				setRightText(JSON.stringify(jsonObj, null, 2))
-			} catch {
-				// If not valid JSON, just show the unescaped string
-				setRightText(unescaped)
-			}
-		} catch (error) {
-			console.log(error)
-			setRightText('Invalid input')
-		}
+		setRightText(unescapeInput(leftText))
 	}
 
 	const handleCopy = () => {
